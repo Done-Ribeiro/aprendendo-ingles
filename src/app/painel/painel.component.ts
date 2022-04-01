@@ -16,6 +16,8 @@ export class PainelComponent implements OnInit {
   public rodada: number = 0
   public rodadaFrase: Frase
 
+  public progresso: number = 0
+
   constructor() {
     //definição dinamica -> ao atribuir a rodadaFrase, o valor baseado no this.rodada, a frase ficará dinamica (depois)
     this.rodadaFrase = this.frases[this.rodada]
@@ -37,6 +39,10 @@ export class PainelComponent implements OnInit {
 
       //trocar pergunta da rodada
       this.rodada++
+
+      //progresso
+      this.progresso = this.progresso + (100 / this.frases.length)//deixa dinamico a %, de acordo com o tamanho do array de frases
+      console.log(this.progresso)
 
       //atualiza o objeto rodadaFrase
       this.rodadaFrase = this.frases[this.rodada]
