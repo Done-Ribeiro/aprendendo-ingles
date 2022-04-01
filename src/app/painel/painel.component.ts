@@ -13,7 +13,14 @@ export class PainelComponent implements OnInit {
   public instrucao: string = 'Traduza a frase:'
   public resposta?: string
 
-  constructor() { console.log(this.frases) }
+  public rodada: number = 0
+  public rodadaFrase: Frase
+
+  constructor() {
+    //definição dinamica -> ao atribuir a rodadaFrase, o valor baseado no this.rodada, a frase ficará dinamica (depois)
+    this.rodadaFrase = this.frases[this.rodada]
+    console.log(this.rodadaFrase);
+  }
 
   ngOnInit(): void {
   }
