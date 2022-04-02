@@ -18,6 +18,8 @@ export class PainelComponent implements OnInit {
 
   public progresso: number = 0
 
+  public tentativas: number = 3
+
   constructor() {
     //definição dinamica -> ao atribuir a rodadaFrase, o valor baseado no this.rodada, a frase ficará dinamica (depois)
     this.atualizaRodada()
@@ -32,6 +34,7 @@ export class PainelComponent implements OnInit {
   }
 
   public verificarResposta(): void {
+    console.log(this.tentativas)
     //resposta certa
     if (this.rodadaFrase.frasePtBr == this.resposta) {
       alert('A tradução está correta')
@@ -47,9 +50,14 @@ export class PainelComponent implements OnInit {
       this.atualizaRodada()
 
     } else {
-      alert('A tradução está errada')
-    }
+      //diminuir a variável tentativas
+      this.tentativas--
 
+      if (this.tentativas === -1) {
+        alert('Você perdeu todas as tentativas')
+      }
+    }
+    console.log(this.tentativas)
   }
 
   public atualizaRodada(): void {
