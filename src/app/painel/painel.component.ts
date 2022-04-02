@@ -14,14 +14,13 @@ export class PainelComponent implements OnInit {
   public resposta: string = ''
 
   public rodada: number = 0
-  public rodadaFrase: Frase
+  public rodadaFrase: Frase = this.frases[0]
 
   public progresso: number = 0
 
   constructor() {
     //definição dinamica -> ao atribuir a rodadaFrase, o valor baseado no this.rodada, a frase ficará dinamica (depois)
-    this.rodadaFrase = this.frases[this.rodada]
-    console.log(this.rodadaFrase);
+    this.atualizaRodada()
   }
 
   ngOnInit(): void {
@@ -45,18 +44,19 @@ export class PainelComponent implements OnInit {
       console.log(this.progresso)
 
       //atualiza o objeto rodadaFrase
-      this.rodadaFrase = this.frases[this.rodada]
-
-      //limpar a resposta
-      console.log(this.resposta)
-      this.resposta = ''
-      console.log(this.resposta)
+      this.atualizaRodada()
 
     } else {
       alert('A tradução está errada')
     }
 
+  }
 
+  public atualizaRodada(): void {
+    //define a frase da rodada com base em alguma lógica
+    this.rodadaFrase = this.frases[this.rodada]
+    //limpar a resposta
+    this.resposta = ''
   }
 
 }
