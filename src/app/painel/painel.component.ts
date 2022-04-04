@@ -34,7 +34,6 @@ export class PainelComponent implements OnInit {
   }
 
   public verificarResposta(): void {
-    console.log(this.tentativas)
     //resposta certa
     if (this.rodadaFrase.frasePtBr == this.resposta) {
       alert('A tradução está correta')
@@ -57,7 +56,6 @@ export class PainelComponent implements OnInit {
         alert('Você perdeu todas as tentativas')
       }
     }
-    console.log(this.tentativas)
   }
 
   public atualizaRodada(): void {

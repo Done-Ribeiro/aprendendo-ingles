@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { Coracao } from '../shared/coracao.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Coracao } from '../shared/coracao.model';
   templateUrl: './tentativas.component.html',
   styleUrls: ['./tentativas.component.css']
 })
-export class TentativasComponent implements OnInit {
+export class TentativasComponent implements OnInit, OnChanges {
 
   @Input() tentativas?: number
 
@@ -18,8 +18,15 @@ export class TentativasComponent implements OnInit {
     console.log(this.coracoes)
   }
 
-  ngOnInit(): void {
+  //metodo executado durante processo de decoração dos valores, recebidos de componente pai para filho
+  //ou seja, no momento de input dos dados...
+  //sempre quando existem input de dados, esse metodo é disparado
+  //sempre quando os valores recebidos são alterados, esse metodo tambem é executado
+  ngOnChanges(): void {
     console.log('tentativas recebidas do painel: ', this.tentativas)
+  }
+
+  ngOnInit(): void {
   }
 
 }
