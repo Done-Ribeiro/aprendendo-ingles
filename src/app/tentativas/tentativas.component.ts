@@ -8,7 +8,7 @@ import { Coracao } from '../shared/coracao.model';
 })
 export class TentativasComponent implements OnInit, OnChanges {
 
-  @Input() tentativas?: number
+  @Input() tentativas: number = 0
 
   public coracoes: Coracao[] = [
     new Coracao(true), new Coracao(true), new Coracao(true)
@@ -18,11 +18,11 @@ export class TentativasComponent implements OnInit, OnChanges {
     console.log(this.coracoes)
   }
 
-  //metodo executado durante processo de decoração dos valores, recebidos de componente pai para filho
-  //ou seja, no momento de input dos dados...
-  //sempre quando existem input de dados, esse metodo é disparado
-  //sempre quando os valores recebidos são alterados, esse metodo tambem é executado
   ngOnChanges(): void {
+    if (this.tentativas !== this.coracoes.length) {
+      let indice = this.coracoes.length - this.tentativas
+      this.coracoes[indice - 1].cheio = false
+    }
     console.log('tentativas recebidas do painel: ', this.tentativas)
   }
 
