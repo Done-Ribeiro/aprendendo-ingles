@@ -31,12 +31,10 @@ export class PainelComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('Componente painel foi destruído');
   }
 
   public atualizaResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value
-    // console.log(this.resposta)
   }
 
   public verificarResposta(): void {
@@ -47,7 +45,6 @@ export class PainelComponent implements OnInit, OnDestroy {
 
       //progresso
       this.progresso = this.progresso + (100 / this.frases.length)//deixa dinamico a %, de acordo com o tamanho do array de frases
-      console.log(this.progresso)
 
       //
       if (this.rodada === 4) {
